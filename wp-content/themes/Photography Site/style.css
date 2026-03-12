@@ -7,8 +7,167 @@ Template: Genesis
 Version: 1.0.0
 */
 
-.hero-section {
+/* main styles */
+.site-container {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+* {
+  font-family: "Playfair Display", serif;
+  box-sizing: border-box;
+}
+
+.site-inner {
+  background-color: white;
+  position: relative;
+  z-index: 3;
+}
+
+/* --- header styles --- */
+
+.site-header {
+  position: relative;
+}
+
+.photography-site-header {
+  position: absolute;
+  padding: 20px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.main-link {
+  font-size: 30px;
+}
+
+.main-link a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+}
+
+.main-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(calc(-50% - 50px), -50%);
+  width: 1800px;
+  height: 500px;
+  background: radial-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.65) 20%, transparent 50%);
+
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style-type: none;
+  position: relative;
+  z-index: 1;
+}
+
+.nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  width: 1300px;
+  height: 300px;
+  background: radial-gradient(rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.55) 20%, transparent 50%);
+}
+
+.nav a {
+  color: black;
+  font-weight: bold;
+  margin-right: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* --- image slider --- */
+
+.hero-slider {
+  display: flex;
+  flex-direction: row;
+}
+
+.hero-slider img {
+  width: 100%;
+  aspect-ratio: 20 / 7;
+  object-fit: cover;
+}
+
+.hero-selector {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.hero-selector::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  width: 1300px;
+  height: 300px;
+  background: radial-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.55) 20%, transparent 50%);
+}
+
+.select-dot {
+  background-color: white;
+  width: 10px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* --- main content --- */
+.main-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 75px;
+}
+
+.text-left h1 {
+  font-weight: bold;
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+
+.text-left h3 {
+  font-weight: normal;
+  font-size: 25px;
+  margin: 0;
+}
+
+.see-full-gallery a {
+  color: black;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1.5px;
+  font-weight: bold;
+  font-size: 25px;
 }

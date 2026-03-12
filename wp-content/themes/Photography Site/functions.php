@@ -1,0 +1,5 @@
+<?php
+/**
+ * Photography Child Theme
+ */
+

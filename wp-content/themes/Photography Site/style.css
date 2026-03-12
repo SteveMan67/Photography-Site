@@ -1,0 +1,14 @@
+/*
+Theme Name: Photography Site
+Theme URI: https://
+Description: A site showcasing my photography
+Author: Timothy Popp
+Template: Genesis
+Version: 1.0.0
+*/
+
+.hero-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

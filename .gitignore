@@ -18,6 +18,10 @@ wp-content/plugins/**
 !wp-content/themes/photography/
 !wp-content/themes/photography/**
 
+wp-content/themes/photography/node_modules/
+wp-content/themes/photography/package-lock.json
+wp-content/themes/photography/package.json
+
 # Functionality Plugin
 #!wp-content/plugins/SITE/
 #!wp-content/plugins/SITE/**

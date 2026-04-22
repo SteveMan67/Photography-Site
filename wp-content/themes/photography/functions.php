@@ -20,6 +20,12 @@ function photography_site_enqueue_fonts()
 
 add_action('wp_head', 'photography_site_google_fonts_preconnect');
 add_action('wp_enqueue_scripts', 'photography_site_enqueue_fonts');
+add_action('wp_enqueue_scripts', 'photography_site_enqueue_styles');
+
+function photography_site_enqueue_styles()
+{
+  wp_enqueue_style('main-styles', get_stylesheet_directory_uri() . '/styles/main.css');
+}
 
 add_action('init', 'register_slide_cpt_and_tax');
 

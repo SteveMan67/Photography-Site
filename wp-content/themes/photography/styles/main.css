@@ -40,8 +40,12 @@ body {
 }
 
 .main-link {
-  font-size: 30px;
+  height: 40px;
+  font-size: 25px;
   z-index: 1;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.27);
 }
 
 .main-link a {
@@ -50,70 +54,53 @@ body {
   font-weight: bold;
   position: relative;
 }
-
-.main-link::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(calc(-50% - 50px), -50%);
-  width: 1800px;
-  height: 500px;
-  background: radial-gradient(
-    rgba(255, 255, 255, 0.7) 0%,
-    rgba(255, 255, 255, 0.65) 20%,
-    transparent 50%
-  );
+.main-link a:hover {
+  text-decoration: underline;
 }
 
 .nav {
+  height: 40px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  gap: 20px;
   align-items: center;
   list-style-type: none;
   position: relative;
   z-index: 1;
-}
-
-.nav::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(50%, -50%);
-  width: 1300px;
-  height: 300px;
-  background: radial-gradient(
-    rgba(255, 255, 255, 0.6) 0%,
-    rgba(255, 255, 255, 0.55) 20%,
-    transparent 50%
-  );
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2px 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.27);
 }
 
 .nav a {
+  line-height: 20px;
   color: black;
   font-weight: bold;
-  margin-right: 20px;
   position: relative;
   z-index: 2;
+  font-size: 18px;
 }
 
 .slides li {
   margin: 0 !important;
 }
 
-.metaslider.ms-theme-clarity
-  .flexslider
-  .flex-direction-nav
-  a.flex-prev::after {
+.metaslider.ms-theme-clarity .flexslider .flex-direction-nav a.flex-prev::after {
   mask-image: url("../images/icons/left.svg") !important;
 }
 
-.metaslider.ms-theme-clarity
-  .flexslider
-  .flex-direction-nav
-  a.flex-next::after {
+.metaslider.ms-theme-clarity .flexslider .flex-direction-nav a.flex-next::after {
   mask-image: url("../images/icons/right.svg") !important;
+}
+
+.metaslider.ms-theme-clarity .flexslider .flex-control-nav {
+  bottom: 18px !important;
+}
+
+.metaslider.ms-theme-clarity .flexslider .flex-control-paging li a {
+  width: 14px !important;
+  height: 14px !important;
 }
 
 /* --- main content --- */

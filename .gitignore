@@ -15,8 +15,12 @@ wp-content/plugins/**
 # Start editing!
 
 # Theme
-!wp-content/themes/Photography\ Site/
-!wp-content/themes/Photography\ Site/**
+!wp-content/themes/photography/
+!wp-content/themes/photography/**
+
+wp-content/themes/photography/node_modules/
+wp-content/themes/photography/package-lock.json
+wp-content/themes/photography/package.json
 
 # Functionality Plugin
 #!wp-content/plugins/SITE/

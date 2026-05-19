@@ -31,33 +31,13 @@ function insert_header()
 
 function photography_slides()
 {
-  $images = get_attached_media('image', get_queried_object_id());
-  if (! $images) return;
-?>
-
-  <div class="hero-slider">
-    <?php foreach ($images as $image) :
-      $src = wp_get_attachment_image_url($image->ID, 'full');
-      $alt = get_post_meta($image->IdD, '__wp_attachment_image_alt', true);
-    ?>
-      <img src="<?php echo esc_url($src); ?>"
-        alt="<?php echo esc_attr($alt); ?>">
-
-    <?php endforeach; ?>
-  </div>
-  <div class="hero-selector">
-    <?php foreach ($images as $image) : ?>
-      <div class="select-dot"></div>
-    <?php endforeach; ?>
-
-  </div>
-  <?php
+  echo do_shortcode('[metaslider id="54"]');
 }
 
 
 function photography_homepage_content()
 {
-  ?>:!
+?>
   <div class="main-text">
     <div class="text-left">
       <h1>Hi, I'm Tim.</h1>

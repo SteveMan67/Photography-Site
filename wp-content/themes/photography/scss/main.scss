@@ -146,19 +146,19 @@ body {
 
 @keyframes slide-left {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 @keyframes slide-right {
   0% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
   100% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -169,16 +169,16 @@ body {
 
   .gallery-bottom,
   .gallery-top {
+    width: max-content;
     display: flex;
     flex-wrap: nowrap;
-    gap: 25px;
   }
 
   .gallery-bottom {
-    animation: slide-left 25s linear infinite;
+    animation: slide-left 50s linear infinite;
   }
   .gallery-top {
-    animation: slide-right 25s linear infinite;
+    animation: slide-right 50s linear infinite;
   }
 
   .gallery-top:hover,
@@ -188,5 +188,11 @@ body {
 
   img {
     height: 250px;
+    transition: transform 0.2s ease-in-out;
+    margin-right: 25px;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }

@@ -138,18 +138,18 @@ body {
 /* --- photo wheels --- */
 @keyframes slide-left {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 @keyframes slide-right {
   0% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
   100% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 .gallery {
@@ -159,15 +159,15 @@ body {
 }
 .gallery .gallery-bottom,
 .gallery .gallery-top {
+  width: max-content;
   display: flex;
   flex-wrap: nowrap;
-  gap: 25px;
 }
 .gallery .gallery-bottom {
-  animation: slide-left 25s linear infinite;
+  animation: slide-left 50s linear infinite;
 }
 .gallery .gallery-top {
-  animation: slide-right 25s linear infinite;
+  animation: slide-right 50s linear infinite;
 }
 .gallery .gallery-top:hover,
 .gallery .gallery-bottom:hover {
@@ -175,6 +175,11 @@ body {
 }
 .gallery img {
   height: 250px;
+  transition: transform 0.2s ease-in-out;
+  margin-right: 25px;
+}
+.gallery img:hover {
+  transform: scale(1.05);
 }
 
 /*# sourceMappingURL=main.css.map */

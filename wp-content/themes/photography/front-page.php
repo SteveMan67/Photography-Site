@@ -53,11 +53,18 @@ function photography_homepage_content()
 function photography_homepage_photo_wheel()
 {
   $images = get_field("images", 'option');
+  $valid_images = array();
   if ($images) :
-    shuffle($images);
+    foreach ($images as $img) {
+      $file_path = get_attached_file($img['ID']);
+      if ($file_path && file_exists($file_path)) {
+        $valid_images[] = $img;
+      }
+    }
+    shuffle($valid_images);
 
-    $half = ceil(count($images) / 2);
-    $chunks = array_chunk($images, $half);
+    $half = ceil(count($valid_images) / 2);
+    $chunks = array_chunk($valid_images, $half);
 
     $top_row = $chunks[0] ?? [];
     $bottom_row = $chunks[1] ?? [];
@@ -67,12 +74,16 @@ function photography_homepage_photo_wheel()
     <div class="gallery">
       <div class="gallery-top">
         <?php foreach ($top_row as $image) : ?>
-          <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+          <?php if (! empty($image['url'])) : ?>
+            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+          <?php endif; ?>
         <?php endforeach; ?>
       </div>
       <div class="gallery-bottom">
         <?php foreach ($bottom_row as $image) : ?>
-          <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+          <?php if (! empty($image['url'])) : ?>
+            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+          <?php endif; ?>
         <?php endforeach; ?>
       </div
         </div>

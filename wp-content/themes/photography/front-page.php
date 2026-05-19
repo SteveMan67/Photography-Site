@@ -51,13 +51,13 @@ function photography_slides()
     <?php endforeach; ?>
 
   </div>
-<?php
+  <?php
 }
 
 
 function photography_homepage_content()
 {
-?>
+  ?>:!
   <div class="main-text">
     <div class="text-left">
       <h1>Hi, I'm Tim.</h1>

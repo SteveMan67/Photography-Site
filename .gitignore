@@ -1,9 +1,9 @@
 # Ignore everything #
 **
-wp-content/
+!wp-content/
 wp-content/**
-wp-content/themes/
-wp-content/plugins/
+!wp-content/themes/
+!wp-content/plugins/
 wp-content/themes/**
 wp-content/plugins/**
 
@@ -26,7 +26,7 @@ wp-content/themes/photography/package.json
 #!wp-content/plugins/SITE/
 #!wp-content/plugins/SITE/**
 
-# Stop editing!
+# Stop editing! 
 
 # Always include the build script #
 ###################################

@@ -1,4 +1,16 @@
 <?php
+define('CHILD_THEME_NAME', 'Photography Theme');
+define('CHILD_THEME_URL', 'https://CHANGE ME.com');
+define('CHILD_THEME_VERSION', '1.0.0');
+
+// Start the engine
+require_once get_template_directory() . '/lib/init.php';
+
+// Add standard basic support
+add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
+add_theme_support('genesis-responsive-viewport');
+add_theme_support('genesis-accessibility', array('drop-down-menu', 'search-form'));
+
 
 /**
  * Photography Child Theme
@@ -25,35 +37,4 @@ add_action('wp_enqueue_scripts', 'photography_site_enqueue_styles');
 function photography_site_enqueue_styles()
 {
   wp_enqueue_style('main-styles', get_stylesheet_directory_uri() . '/styles/main.css');
-}
-
-add_action('init', 'register_slide_cpt_and_tax');
-
-function register_slide_cpt_and_tax()
-{
-  $tax_args = array(
-    'labels' => array(
-      'name' => 'Slide Tags',
-      'singular_name' => 'Slide Tag',
-    ),
-    'hierarchical' => false,
-    'public' => true,
-    'show_admin_column' => true
-  );
-  register_taxonomy('slide_tag', array('slide'), $tax_args);
-
-  $ctp_args = array(
-    'labels' => array(
-      'name' => 'Slides',
-      'singular_name' => 'Slide',
-      'add_new_item' => 'Add New Slide',
-    ),
-    'public' => false,
-    'show_ui' => true,
-    'menu_position' => 20,
-    'menu_icon' => 'dashicons-images-alt2',
-    'supports' => array('title', 'thumbnail'),
-    'has_archive' => false,
-  );
-  register_post_type('slide', $ctp_args);
 }

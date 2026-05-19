@@ -10,7 +10,7 @@ remove_action('genesis_structural_wrap-header', '__return_false');
 add_action('genesis_loop', 'photography_homepage_content');
 add_action('genesis_header', 'insert_header');
 add_action('genesis_after_header', 'photography_slides', 20);
-
+add_action('genesis_loop', 'photography_homepage_photo_wheel');
 
 
 function insert_header()
@@ -47,8 +47,36 @@ function photography_homepage_content()
       <a href="/gallery" class="gallery-link">See Full Gallery</a>
     </div>
   </div>
-<?php
+  <?php
+}
+
+function photography_homepage_photo_wheel()
+{
+  $images = get_field("images", 'option');
+  if ($images) :
+    shuffle($images);
+
+    $half = ceil(count($images) / 2);
+    $chunks = array_chunk($images, $half);
+
+    $top_row = $chunks[0] ?? [];
+    $bottom_row = $chunks[1] ?? [];
+    $top_row = array_merge($chunks[0], $chunks[0]);
+    $bottom_row = array_merge($chunks[1], $chunks[1]);
+  ?>
+    <div class="gallery">
+      <div class="gallery-top">
+        <?php foreach ($top_row as $image) : ?>
+          <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+        <?php endforeach; ?>
+      </div>
+      <div class="gallery-bottom">
+        <?php foreach ($bottom_row as $image) : ?>
+          <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+        <?php endforeach; ?>
+      </div
+        </div>
+  <?php endif;
 }
 
 genesis();
-

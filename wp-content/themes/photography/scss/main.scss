@@ -117,6 +117,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px 75px;
+  margin-bottom: 50px;
 }
 
 .text-left h1 {
@@ -138,4 +139,53 @@ body {
   text-decoration-thickness: 1.5px;
   font-weight: bold;
   font-size: 25px;
+}
+
+/* --- photo wheels --- */
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  .gallery-bottom,
+  .gallery-top {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 25px;
+  }
+
+  .gallery-bottom {
+    animation: slide-left 25s linear infinite;
+  }
+  .gallery-top {
+    animation: slide-right 25s linear infinite;
+  }
+
+  .gallery-top:hover,
+  .gallery-bottom:hover {
+    animation-play-state: paused;
+  }
+
+  img {
+    height: 250px;
+  }
 }

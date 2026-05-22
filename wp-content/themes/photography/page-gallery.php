@@ -137,7 +137,8 @@ function photography_gallery()
     <?php
     endforeach;
     ?>
-  </div> <?php
-        }
+  </div>
+<?php
+}
 
-        genesis();
+genesis();

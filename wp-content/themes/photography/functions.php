@@ -4,7 +4,7 @@ define('CHILD_THEME_URL', 'https://CHANGE ME.com');
 define('CHILD_THEME_VERSION', '1.0.0');
 
 // Start the engine
-require_once get_template_directory() . '/lib/init.php';
+require_once(get_template_directory() . '/lib/init.php');
 
 // Add standard basic support
 add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));

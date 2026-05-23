@@ -114,6 +114,8 @@ function photography_gallery()
 
   shuffle($groups);
 
+  $img_index = 0;
+
 ?> <div class="gallery-wrapper">
     <?php foreach ($groups as $group):
       $v_count = 0;
@@ -130,13 +132,22 @@ function photography_gallery()
         <?php foreach ($group['images'] as $img) :
           $orentation = get_orientation($img);
           $index = $orentation === 'H' ? ++$h_count : ++$v_count;
+          ++$img_index;
+
         ?>
-          <img src="<?php echo esc_url($img['url']); ?>" alt="<?php echo esc_attr($img['alt']); ?>" class="<?php echo $orentation; ?> <?php echo $orentation . '-' . $index; ?>">
+          <img src="<?php echo esc_url($img['url']); ?>" alt="<?php echo esc_attr($img['alt']); ?>" class="<?php echo $orentation; ?> <?php echo $orentation . '-' . $index; ?> lightbox-trigger" data-index="<?php echo $img_index; ?>" data-full="<?php esc_url($img['url']); ?>">
         <?php endforeach; ?>
       </div>
     <?php
     endforeach;
     ?>
+  </div>
+
+  <div class="lightbox hidden">
+    <button class="lightbox-prev"><img src="../images/icons/left.svg"></button>
+    <img id="lightbox-main">
+    <button class="lightbox-next"><img src="../images/icons/left.svg"></button>
+    <div class="lightbox-reel" id="lightbox-reel"></div>
   </div>
 <?php
 }

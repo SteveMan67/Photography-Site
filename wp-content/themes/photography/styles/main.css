@@ -156,6 +156,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 25px;
+  margin-bottom: 50px;
 }
 .gallery .gallery-bottom,
 .gallery .gallery-top {

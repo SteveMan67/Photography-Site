@@ -33,8 +33,17 @@ function photography_site_enqueue_fonts()
 add_action('wp_head', 'photography_site_google_fonts_preconnect');
 add_action('wp_enqueue_scripts', 'photography_site_enqueue_fonts');
 add_action('wp_enqueue_scripts', 'photography_site_enqueue_styles');
+add_action('wp_enqueue_scripts', 'photography_site_enqueue_gallery_scripts');
 
 function photography_site_enqueue_styles()
 {
   wp_enqueue_style('main-styles', get_stylesheet_directory_uri() . '/styles/main.css');
+}
+
+function photography_site_enqueue_gallery_scripts()
+{
+  if (is_page_template('page-gallery.php')) {
+    wp_enqueue_style('lightbox-style', get_stylesheet_directory_uri() . '/styles/gallery.css');
+    wp_enqueue_script('lightbox-script', get_template_directory_uri() . '/js/gallery.js');
+  }
 }

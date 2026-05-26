@@ -8,38 +8,97 @@
   left: 0;
   display: grid;
   grid-template-columns: 80px 1fr 80px;
-  grid-template-rows: 1fr 80px;
-  grid-template-areas: "left-button img right-button" "left-button reel left-button";
-  width: 100%;
-  height: 100%;
+  grid-template-rows: 80px 1fr 150px;
+  grid-template-areas: "none none close-button" "left-button main-img right-button" "reel reel reel";
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
+  overflow: hidden;
+}
+.lightbox .background-tint {
+  z-index: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  transform: scale(1.5);
+  filter: blur(20px);
+  opacity: 0.4;
+  background-image: url("http://photography-site.local/wp-content/uploads/2026/04/IMG_6311-scaled.jpg");
+  transition: background-image 0.5s ease-in-out;
+}
+.lightbox img,
+.lightbox div {
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.lightbox .close-button {
+  grid-area: close-button;
+  cursor: pointer;
+}
+.lightbox .close-button div {
+  text-align: center;
+  background-color: white;
+  border-radius: 50%;
+  width: 40px;
+  aspect-ratio: 1;
+  font-size: 30px;
+  font-weight: 900;
+}
+.lightbox .lightbox-prev,
+.lightbox .lightbox-next {
+  cursor: pointer;
+}
+.lightbox .lightbox-prev img,
+.lightbox .lightbox-next img {
+  background-color: white;
+  border-radius: 50%;
+  width: 40px;
+  aspect-ratio: 1;
+  padding: 10px;
 }
 .lightbox .lightbox-prev {
   grid-area: left-button;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
 .lightbox .lightbox-next {
   grid-area: right-button;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
 .lightbox .lightbox-main {
-  grid-area: img;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  grid-area: main-img;
+  min-height: 0;
+  min-width: 0;
+}
+.lightbox .lightbox-main #lightbox-main {
+  max-width: 100%;
+  max-height: 100%;
+  padding: 30px;
+  object-fit: contain;
 }
 .lightbox .lightbox-reel {
+  width: 100%;
+  cursor: pointer;
   grid-area: reel;
+  overflow: scroll;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  gap: 10px;
+  justify-content: safe center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.lightbox .lightbox-reel img {
+  border-radius: 5px;
+  height: 100px;
+}
+.lightbox .lightbox-reel img.active {
+  border: 2px solid white;
 }
 
 /*# sourceMappingURL=gallery.css.map */

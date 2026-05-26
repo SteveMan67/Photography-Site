@@ -135,7 +135,7 @@ function photography_gallery()
           ++$img_index;
 
         ?>
-          <img src="<?php echo esc_url($img['url']); ?>" alt="<?php echo esc_attr($img['alt']); ?>" class="<?php echo $orentation; ?> <?php echo $orentation . '-' . $index; ?> lightbox-trigger" data-index="<?php echo $img_index; ?>" data-full="<?php esc_url($img['url']); ?>">
+          <img src="<?php echo esc_url($img['url']); ?>" alt="<?php echo esc_attr($img['alt']); ?>" class="<?php echo $orentation; ?> <?php echo $orentation . '-' . $index; ?> lightbox-trigger" data-index="<?php echo $img_index; ?>" data-full="<?php echo esc_url($img['url']); ?>">
         <?php endforeach; ?>
       </div>
     <?php
@@ -144,9 +144,16 @@ function photography_gallery()
   </div>
 
   <div class="lightbox hidden">
-    <button class="lightbox-prev"><img src="../images/icons/left.svg"></button>
-    <img id="lightbox-main">
-    <button class="lightbox-next"><img src="../images/icons/left.svg"></button>
+    <div class="background-tint"></div>
+    <div class="close-button">
+      <div>&times;</div>
+    </div>
+    <div class="lightbox-prev"><img src="<?php echo get_stylesheet_directory_uri() . '/images/icons/left.svg'; ?>"></div>
+    <div class="lightbox-main">
+      <img id="lightbox-main" src="http://photography-site.local/wp-content/uploads/2026/04/IMG_6311-scaled.jpg">
+    </div>
+    <div class="lightbox-next"><img src="<?php echo get_stylesheet_directory_uri() . '/images/icons/right.svg'; ?>">
+    </div>
     <div class="lightbox-reel" id="lightbox-reel"></div>
   </div>
 <?php

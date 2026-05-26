@@ -42,8 +42,6 @@ function photography_site_enqueue_styles()
 
 function photography_site_enqueue_gallery_scripts()
 {
-  if (is_page_template('page-gallery.php')) {
-    wp_enqueue_style('lightbox-style', get_stylesheet_directory_uri() . '/styles/gallery.css');
-    wp_enqueue_script('lightbox-script', get_template_directory_uri() . '/js/gallery.js');
-  }
+  wp_enqueue_style('lightbox-style', get_stylesheet_directory_uri() . '/styles/gallery.css');
+  wp_enqueue_script('lightbox-script', get_stylesheet_directory_uri() . '/js/gallery.js', array(), '1.0', array('strategy' => 'defer', 'in_footer' => true));
 }

@@ -32,7 +32,6 @@ images.forEach((img) => {
 
 function open_image(url) {
   if (!imgUrls.includes(url)) {
-    console.log("ello");
     lightbox.classList.add("hidden");
     body.style.overflow = "";
     return;
@@ -92,12 +91,16 @@ lightboxClose.addEventListener("mouseup", () => {
 btnNext.addEventListener("mouseup", () => change_image(1));
 btnPrev.addEventListener("mouseup", () => change_image(-1));
 
-document.addEventListener("keydown", (e) => {
+document.addEventListener("keyup", (e) => {
+  if (lightbox.classList.contains("hidden")) return;
   if (e.key === "ArrowLeft") {
+    e.stopImmediatePropagation();
     change_image(-1);
   } else if (e.key === "ArrowRight") {
+    e.stopImmediatePropagation();
     change_image(1);
   } else if ((e.key = "Esc")) {
+    e.stopPropagation();
     open_image();
   }
 });

@@ -40,7 +40,23 @@ function open_image(url) {
 
   currentIndex = imgUrls.indexOf(url);
   lightboxMain.src = url;
-  lightboxTint.style.backgroundImage = `url(${url})`;
+
+  const oldTint = lightbox.querySelector(".background-tint");
+  const newTint = document.createElement("div");
+  newTint.className = "background-tint";
+  newTint.style.backgroundImage = `url(${url})`;
+  newTint.style.opacity = 0;
+
+  lightbox.insertBefore(newTint, lightbox.firstChild);
+
+  requestAnimationFrame(() => {
+    newTint.style.opacity = "0.4";
+    if (oldTint) {
+      oldTint.style.opacity = "0";
+      setTimeout(() => oldTint.remove(), 500);
+    }
+  });
+
   lightbox.classList.remove("hidden");
   body.style.overflow = "hidden";
 

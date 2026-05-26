@@ -75,3 +75,13 @@ lightboxClose.addEventListener("mouseup", () => {
 
 btnNext.addEventListener("mouseup", () => change_image(1));
 btnPrev.addEventListener("mouseup", () => change_image(-1));
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowLeft") {
+    change_image(-1);
+  } else if (e.key === "ArrowRight") {
+    change_image(1);
+  } else if ((e.key = "Esc")) {
+    open_image();
+  }
+});

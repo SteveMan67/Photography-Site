@@ -132,10 +132,22 @@ function photography_gallery()
         <?php foreach ($group['images'] as $img) :
           $orentation = get_orientation($img);
           $index = $orentation === 'H' ? ++$h_count : ++$v_count;
+          $id = $img['ID'];
+          $title = get_field('image_title', $id);
+          $description = get_field('image_description', $id);
+          $date_taken = get_field('date_taken', $id);
+
           ++$img_index;
 
         ?>
-          <img src="<?php echo esc_url($img['url']); ?>" alt="<?php echo esc_attr($img['alt']); ?>" class="<?php echo $orentation; ?> <?php echo $orentation . '-' . $index; ?> lightbox-trigger" data-index="<?php echo $img_index; ?>" data-full="<?php echo esc_url($img['url']); ?>">
+          <img
+            src="<?php echo esc_url($img['url']); ?>"
+            alt="<?php echo esc_attr($img['alt']); ?>"
+            class="<?php echo $orentation; ?> <?php echo $orentation . '-' . $index; ?>"
+            data-title="<?php echo $title; ?>"
+            data-date="<?php echo $date_taken; ?>"
+            data-description="<?php echo $description; ?>"
+            data-full="<?php echo esc_url($img['url']); ?>">
         <?php endforeach; ?>
       </div>
     <?php
@@ -145,12 +157,19 @@ function photography_gallery()
 
   <div class="lightbox hidden">
     <div class="background-tint"></div>
+    <div class="metadata">
+      <p class="title">
+      <p class="date-taken">
+    </div>
     <div class="close-button">
       <div>&times;</div>
     </div>
     <div class="lightbox-prev"><img src="<?php echo get_stylesheet_directory_uri() . '/images/icons/left.svg'; ?>"></div>
     <div class="lightbox-main">
       <img id="lightbox-main" src="http://photography-site.local/wp-content/uploads/2026/04/IMG_6311-scaled.jpg">
+      <div class="description">
+        <p>this is a HELP ME I'M STUC placeholder.</p>
+      </div>
     </div>
     <div class="lightbox-next"><img src="<?php echo get_stylesheet_directory_uri() . '/images/icons/right.svg'; ?>">
     </div>

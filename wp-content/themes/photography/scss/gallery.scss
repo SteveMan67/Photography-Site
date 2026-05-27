@@ -7,9 +7,9 @@
   top: 0;
   left: 0;
   display: grid;
-  grid-template-columns: 80px 1fr 80px;
+  grid-template-columns: 100px 1fr 80px;
   grid-template-rows: 80px 1fr 150px;
-  grid-template-areas: "none none close-button" "left-button main-img right-button" "reel reel reel";
+  grid-template-areas: "title title close-button" "left-button main-img right-button" "reel reel reel";
   width: 100vw;
   height: 100vh;
   max-width: 100%;
@@ -39,6 +39,22 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+  }
+
+  div.metadata {
+    grid-area: title;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: row;
+    color: white;
+    gap: 15px;
+    margin: 15px;
+    font-size: 25px;
+
+    .date-taken {
+      color: #aaaaaa;
+    }
   }
 
   .close-button {
@@ -71,6 +87,7 @@
   .lightbox-prev {
     grid-area: left-button;
   }
+
   .lightbox-next {
     grid-area: right-button;
   }
@@ -78,14 +95,27 @@
     grid-area: main-img;
     min-height: 0;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    margin-bottom: 0;
 
     #lightbox-main {
       max-width: 100%;
-      max-height: 100%;
-      padding: 30px;
+      flex: 1;
+      min-height: 0;
       object-fit: contain;
     }
+
+    .description {
+      flex: 0 0 auto;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 18px;
+    }
   }
+
   .lightbox-reel {
     width: 100%;
     cursor: pointer;

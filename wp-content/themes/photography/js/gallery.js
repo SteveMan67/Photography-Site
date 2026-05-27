@@ -1,5 +1,8 @@
 const images = document.querySelectorAll(".gallery-wrapper img");
 const lightbox = document.querySelector(".lightbox");
+const lightboxTitle = document.querySelector(".lightbox .title");
+const lightboxDate = document.querySelector(".lightbox .date-taken");
+const description = document.querySelector(".lightbox .description");
 const lightboxMain = document.querySelector(".lightbox-main img");
 const lightboxTint = document.querySelector(".lightbox .background-tint");
 const lightboxClose = document.querySelector(".close-button");
@@ -12,10 +15,15 @@ let currentIndex = 0;
 
 console.log(images.length);
 
-let imgUrls = [];
+let imgData = [];
 
 images.forEach((img) => {
-  imgUrls.push(img.dataset.full);
+  const dataPoint = {};
+  dataPoint.url = img.dataset.full;
+  dataPoint.title = img.dataset.title;
+  dataPoint.date = img.dataset.date;
+  dataPoint.description = img.dataset.description;
+  imgData.push(dataPoint);
 
   img.addEventListener("mouseup", () => {
     open_image(img.dataset.full);
@@ -31,14 +39,20 @@ images.forEach((img) => {
 });
 
 function open_image(url) {
-  if (!imgUrls.includes(url)) {
+  imageData = imgData.filter((f) => f.url === url);
+  if (!imageData.length) {
     lightbox.classList.add("hidden");
     body.style.overflow = "";
     return;
   }
 
-  currentIndex = imgUrls.indexOf(url);
+  currentPhoto = imageData[0];
+
+  currentIndex = imgData.indexOf(currentPhoto);
   lightboxMain.src = url;
+  lightboxTitle.innerText = currentPhoto.title;
+  lightboxDate.innerText = currentPhoto.date;
+  description.innerText = currentPhoto.description;
 
   const oldTint = lightbox.querySelector(".background-tint");
   const newTint = document.createElement("div");
@@ -79,9 +93,9 @@ function open_image(url) {
 
 function change_image(dir) {
   currentIndex += dir;
-  if (currentIndex < 0) currentIndex = imgUrls.length - 1;
-  if (currentIndex >= imgUrls.length) currentIndex = 0;
-  open_image(imgUrls[currentIndex]);
+  if (currentIndex < 0) currentIndex = imgData.length - 1;
+  if (currentIndex >= imgData.length) currentIndex = 0;
+  open_image(imgData[currentIndex].url);
 }
 
 lightboxClose.addEventListener("mouseup", () => {
@@ -99,8 +113,16 @@ document.addEventListener("keyup", (e) => {
   } else if (e.key === "ArrowRight") {
     e.stopImmediatePropagation();
     change_image(1);
-  } else if ((e.key = "Esc")) {
+  } else if (e.key === "Escape") {
     e.stopPropagation();
     open_image();
   }
+});
+
+lightboxReel.addEventListener("wheel", (e) => {
+  e.preventDefault();
+  lightboxReel.scrollBy({
+    left: e.deltaY * 4,
+    behavior: "smooth",
+  });
 });

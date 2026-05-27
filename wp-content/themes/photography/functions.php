@@ -45,3 +45,18 @@ function photography_site_enqueue_gallery_scripts()
   wp_enqueue_style('lightbox-style', get_stylesheet_directory_uri() . '/styles/gallery.css');
   wp_enqueue_script('lightbox-script', get_stylesheet_directory_uri() . '/js/gallery.js', array(), '1.0', array('strategy' => 'defer', 'in_footer' => true));
 }
+
+add_action('admin_head', function () {
+  echo '<style>
+    .acf-gallery-side tr[data-name="title"],
+    .acf-gallery-side tr[data-name="caption"],
+    .acf-gallery-side tr[data-name="alt"],
+    .acf-gallery-side tr[data-name="description"] {
+    display: none !important;
+}
+</style>';
+});
+
+
+// REMOVE ME
+add_filter('show_admin_bar', '__return_false');
